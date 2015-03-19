@@ -22,7 +22,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord {
      * Встановлення класу ActiveQuery
      * @var ActiveQuery
      */
-    public static $commonQuery = \thread\models\query\ActiveQuery::class;
+    public static $commonQuery = query\ActiveQuery::class;
 
     /**
      * Визначення базових поведінок

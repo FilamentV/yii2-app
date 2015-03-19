@@ -3,7 +3,6 @@
 namespace thread\models;
 
 use Yii;
-use thread\behaviors\PurifierBehavior;
 
 /**
  * Class ActiveRecordLang
@@ -26,16 +25,6 @@ abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
     public function behaviors() {
 
         return [
-            'purifierBehavior' => [
-                'class' => PurifierBehavior::className(),
-                'textAttributes' => [
-                    \yii\db\ActiveRecord::EVENT_BEFORE_UPDATE => ['title'],
-                    \yii\db\ActiveRecord::EVENT_BEFORE_INSERT => ['title'],
-                ],
-                'purifierOptions' => [
-                    'HTML.AllowedElements' => Yii::$app->params['allowHtmlTags']
-                ]
-            ],
         ];
     }
 
