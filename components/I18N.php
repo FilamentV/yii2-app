@@ -1,12 +1,13 @@
 <?php
 
-namespace thread\app\components;
+namespace filament\app\components;
 
 /**
- * @package thread\app\components
+ * Separate Application Language and Themes Language
+ * @package filament\app\components
  * @author FilamentV <vortex.filament@gmail.com>
- * @copyright (c) 2014, Thread
- * @version 19/03/2015
+ * @copyright (c) 2015, Thread
+ * @version 20/03/2015
  */
 class I18N extends \yii\i18n\I18N {
 

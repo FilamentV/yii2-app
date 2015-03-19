@@ -1,16 +1,14 @@
 <?php
 
-namespace thread\models;
+namespace filament\app\models;
 
 use Yii;
 
 /**
- * Class ActiveRecordLang
- * Common-модель ActiveRecord для мовної частини [[ActiveRecordLang]]
- * @package thread\models
+ * @package filament\app\models
  * @author FilamentV <vortex.filament@gmail.com>
- * @copyright (c) 2014, Thread
- * @version 19/03/2015
+ * @copyright (c) 2015, Thread
+ * @version 20/03/2015
  */
 abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
 

@@ -1,16 +1,16 @@
 <?php
 
-namespace thread\models;
+namespace filament\app\models;
 
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
 
 /**
- * Class ActiveRecord
- * Common-модель ActiveRecord [[ActiveRecord]]
- * @package thread\models
+ * Exted basic ActiveRecord some basic methods and attributes
+ * 
+ * @package filament\app\models
  * @author FilamentV <vortex.filament@gmail.com>
- * @copyright (c) 2014, Thread
+ * @copyright (c) 2015, Thread
  * @version 19/03/2015
  */
 abstract class ActiveRecord extends \yii\db\ActiveRecord {

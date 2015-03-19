@@ -1,17 +1,18 @@
 <?php
 
-namespace thread\models;
+namespace filament\app\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
 
 /**
- * Class Lang
- * Common-модель language [[Lang]]
- * @package thread\models
+ * 
+ * Base Language Model to use into filament\multilang
+ * 
+ * @package filament\app\models
  * @author FilamentV <vortex.filament@gmail.com>
- * @copyright (c) 2014, Thread
- * @version 19/03/2015
+ * @copyright (c) 2015, Thread
+ * @version 20/03/2015
  */
 final class Lang extends \thread\models\ActiveRecord {
 

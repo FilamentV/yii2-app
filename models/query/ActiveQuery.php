@@ -1,15 +1,15 @@
 <?php
 
-namespace thread\models\query;
+namespace filament\app\models\query;
 
-use thread\models\ActiveRecord;
+use filament\app\models\ActiveRecord;
 
 /**
  * Class CommonQuery
  * Common-запитів базовий ActiveQuery
  * @package thread\models\query
  * @author FilamentV <vortex.filament@gmail.com>
- * @copyright (c) 2014, Thread
+ * @copyright (c) 2015, Thread
  * @version 19/03/2015
  */
 class ActiveQuery extends \yii\db\ActiveQuery {

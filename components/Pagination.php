@@ -1,17 +1,17 @@
 <?php
 
-namespace thread\components;
+namespace filament\app\components;
 
 use Yii;
 use yii\web\NotFoundHttpException;
 
 /**
- * Class Pagination
- * Common Pagination [[Pagination]]
- * @package thread\components
+ * Corrected Pagination from SEO policy
+ * 
+ * @package filament\app\components
  * @author FilamentV <vortex.filament@gmail.com>
- * @copyright (c) 2014, Thread
- * @version 19/03/2015
+ * @copyright (c) 2015, Thread
+ * @version 20/03/2015
  */
 class Pagination extends \yii\data\Pagination {
 

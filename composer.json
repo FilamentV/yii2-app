@@ -1,0 +1,24 @@
+{
+    "name": "filamentv/yii2-app",
+    "description": "yii2 app base",
+    "keywords": ["yii2", "application", "components", "pagination"],
+    "homepage": "https://github.com/FilamentV/yii2-app",
+    "type": "yii2-component",
+    "license": "NO",
+    "authors": [
+        {
+            "name": "FilamentV",
+            "email": "vortex.filament@gmail.com",
+            "homepage": ""
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "yiisoft/yii2-dev": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "filamentv\\app\\": ""
+        }
+    }
+}
