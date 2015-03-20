@@ -14,7 +14,7 @@ use yii\data\ActiveDataProvider;
  * @copyright (c) 2015, Thread
  * @version 20/03/2015
  */
-final class Lang extends \thread\models\ActiveRecord {
+final class Lang extends ActiveRecord {
 
     /**
      * Поточна мова

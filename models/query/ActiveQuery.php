@@ -2,7 +2,7 @@
 
 namespace filamentv\app\models\query;
 
-use filament\app\models\ActiveRecord;
+use filamentv\app\models\ActiveRecord;
 
 /**
  * Class CommonQuery
