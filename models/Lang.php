@@ -1,6 +1,6 @@
 <?php
 
-namespace filament\app\models;
+namespace filamentv\app\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -9,7 +9,7 @@ use yii\data\ActiveDataProvider;
  * 
  * Base Language Model to use into filament\multilang
  * 
- * @package filament\app\models
+ * @package filamentv\app\models
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  * @version 20/03/2015

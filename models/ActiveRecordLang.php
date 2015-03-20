@@ -1,11 +1,11 @@
 <?php
 
-namespace filament\app\models;
+namespace filamentv\app\models;
 
 use Yii;
 
 /**
- * @package filament\app\models
+ * @package filamentv\app\models
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  * @version 20/03/2015

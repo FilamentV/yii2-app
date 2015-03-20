@@ -1,6 +1,6 @@
 <?php
 
-namespace filament\app\models;
+namespace filamentv\app\models;
 
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 /**
  * Exted basic ActiveRecord some basic methods and attributes
  * 
- * @package filament\app\models
+ * @package filamentv\app\models
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  * @version 19/03/2015
