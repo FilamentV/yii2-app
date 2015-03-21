@@ -17,19 +17,19 @@ use yii\data\ActiveDataProvider;
 final class Lang extends ActiveRecord {
 
     /**
-     * Поточна мова
+     * Model's base class
      * @var typeof Lang
      */
     protected static $current_lang = NULL;
 
     /**
-     * Мова за замовчуванням
+     * Model's base class
      * @var typeof Lang
      */
     protected static $default_lang = NULL;
 
     /**
-     * Перелік доступних мов
+     * List of languages
      * @var typeof Lang
      */
     protected static $list = NULL;
@@ -86,6 +86,10 @@ final class Lang extends ActiveRecord {
         ];
     }
 
+    /**
+     * @inheritdoc
+     * @return ActiveDataProvider
+     */
     public function search() {
         $query = Lang::find();
 
@@ -100,7 +104,7 @@ final class Lang extends ActiveRecord {
     }
 
     /**
-     * Повертає вказівник на поточний обєкт мови
+     * The method return the current language model
      * @return Lang
      */
     static function getCurrent() {
@@ -111,7 +115,7 @@ final class Lang extends ActiveRecord {
     }
 
     /**
-     * Встановлення поточного обєкту мови та локаль користувача
+     * The method set the current language model
      * @param string $alias
      */
     static function setCurrent($alias = NULL) {
@@ -121,7 +125,7 @@ final class Lang extends ActiveRecord {
     }
 
     /**
-     * Повертає обєкт мови за замовчуванням
+     * The method return the default language model
      * @return Lang
      */
     static function getDefaultLang() {
@@ -138,7 +142,7 @@ final class Lang extends ActiveRecord {
     }
 
     /**
-     * Повертає перелік мов
+     * The method return list of languages
      * @return array Lang
      */
     static function getList() {
@@ -155,7 +159,7 @@ final class Lang extends ActiveRecord {
     }
 
     /**
-     * Повертає обєкт мови за ідентифікатором
+     * The method return language by alias
      * @param string $alias
      * @return Lang|null
      */
@@ -170,7 +174,7 @@ final class Lang extends ActiveRecord {
     }
 
     /**
-     * Перевірка мови на наявність
+     * Status return method being language model
      * @param type $alias
      * @return boolean
      */

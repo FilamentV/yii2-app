@@ -3,7 +3,6 @@
 namespace filamentv\app\models;
 
 use yii\behaviors\TimestampBehavior;
-use yii\helpers\ArrayHelper;
 
 /**
  * Exted basic ActiveRecord some basic methods and attributes
@@ -19,13 +18,11 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord {
     const STATUS_KEY_OFF = '0';
 
     /**
-     * Встановлення класу ActiveQuery
      * @var ActiveQuery
      */
     public static $commonQuery = query\ActiveQuery::class;
 
     /**
-     * Визначення базових поведінок
      * @return []
      */
     public function behaviors() {
@@ -41,7 +38,6 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Перевизначення базового find()
      * @return type
      */
     public static function find() {
@@ -49,7 +45,6 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Визначені статуси для полів типа ключ
      * @return []
      */
     public static function statusKeyRage() {
@@ -60,7 +55,6 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Повертає наявність атрибута в моделі
      * @param type $attribute
      * @return boollean
      */
@@ -69,36 +63,11 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Повертає наявність сценарія в моделі
      * @param type $scenario
      * @return boollean
      */
     public function is_scenario($scenario) {
         return (array_key_exists($scenario, $this->scenarios())) ? true : false;
-    }
-
-    /**
-     * Оновлює звязок
-     * @param array $keys
-     * @param ActiveRecord $class
-     * @param string $link
-     */
-    protected function relationRefresh($keys, $class, $link) {
-        $item = $class::findAll($keys);
-
-        foreach ($this->$link as $c)
-            $this->unlink($link, $c, true);
-
-        foreach ($item as $i)
-            $this->link($link, $i);
-    }
-
-    /**
-     * 
-     * @return array [id=>title]
-     */
-    public static function dropDownList() {
-        return ArrayHelper::merge(['0' => ''], ArrayHelper::map(static::all(), 'id', 'lang.title'));
     }
 
 }

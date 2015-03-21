@@ -5,8 +5,6 @@ namespace filamentv\app\models\query;
 use filamentv\app\models\ActiveRecord;
 
 /**
- * Class CommonQuery
- * Common-запитів базовий ActiveQuery
  * @package filamentv\app\models\query
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
@@ -15,7 +13,6 @@ use filamentv\app\models\ActiveRecord;
 class ActiveQuery extends \yii\db\ActiveQuery {
 
     /**
-     * Записи за полем alias
      * @return ActiveQuery $this
      */
     public function alias($alias) {
@@ -25,7 +22,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Записи з поміткою на публікацію та не помічені на видалення
      * @return ActiveQuery $this
      */
     public function enabled() {
@@ -33,7 +29,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Записи з поміткою на публікацію
      * @return ActiveQuery $this
      */
     public function published() {
@@ -43,7 +38,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Записи без помітки на публікацію
      * @return ActiveQuery $this
      */
     public function unpublished() {
@@ -53,7 +47,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Записи з поміткою на видалення
      * @return ActiveQuery $this
      */
     public function deleted() {
@@ -63,7 +56,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Записи без помітки на видалення
      * @return ActiveQuery $this
      */
     public function undeleted() {
@@ -73,7 +65,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Записи з поміткою тільки читання
      * @return ActiveQuery $this
      */
     public function readonly() {
@@ -83,7 +74,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Встановлює поле lang
      * @return ActiveQuery $this
      */
     public function _lang() {
@@ -91,7 +81,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Запис з встановленим полем group_id
      * @param string $group_id
      * @return ActiveQuery $this
      */
@@ -104,7 +93,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Запис з встановленим полем id
      * @param type $id
      * @return ActiveQuery $this
      */
@@ -117,7 +105,6 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
-     * Звязує запис з даними мовної таблиці
      * @return ActiveQuery $this
      */
     public function lang() {

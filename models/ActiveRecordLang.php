@@ -17,7 +17,6 @@ abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Визначення базових поведінок
      * @return []
      */
     public function behaviors() {
@@ -27,7 +26,6 @@ abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Перевизначення базового find() для додавання default scopes
      * @return type
      */
     public static function find() {
@@ -35,17 +33,14 @@ abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Визначення базових сценаріїв
      * @return []
      */
     public function scenarios() {
         return [
-            'backend' => ['title'],
         ];
     }
 
     /**
-     * Повертає наявність атрибута в моделі
      * @param type $attribute
      * @return boollean
      */
@@ -54,7 +49,6 @@ abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Повертає наявність сценарія в моделі
      * @param type $scenario
      * @return boollean
      */
