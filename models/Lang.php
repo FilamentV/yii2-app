@@ -6,9 +6,9 @@ use Yii;
 use yii\data\ActiveDataProvider;
 
 /**
- * 
+ *
  * Base Language Model to use into filament\multilang
- * 
+ *
  * @package filamentv\app\models
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
@@ -109,19 +109,29 @@ final class Lang extends ActiveRecord {
      */
     static function getCurrent() {
         if (self::$current_lang === NULL) {
-            self::setCurrent(Yii::$app->language);
+            self::setCurrentByLocal(Yii::$app->language);
         }
         return self::$current_lang;
     }
 
     /**
-     * The method set the current language model
+     * The method set the current language model by alias
      * @param string $alias
      */
-    static function setCurrent($alias = NULL) {
-        $language = self::getLangByUrl($alias);
+    static function setCurrentByAlias($alias = NULL) {
+        $language = self::getLangByAlias($alias);
         self::$current_lang = ($language === NULL) ? self::getDefaultLang() : $language;
-        Yii::$app->language = self::$current_lang->alias;
+        Yii::$app->language = self::$current_lang->local;
+    }
+
+    /**
+     * The method set the current language model by local
+     * @param string $local
+     */
+    static function setCurrentByLocal($local = NULL) {
+        $language = self::getLangByLocal($local);
+        self::$current_lang = ($language === NULL) ? self::getDefaultLang() : $language;
+        Yii::$app->language = self::$current_lang->local;
     }
 
     /**
@@ -130,13 +140,15 @@ final class Lang extends ActiveRecord {
      */
     static function getDefaultLang() {
         if (self::$default_lang === NULL) {
-            if (self::$list == NULL)
+            if (self::$list == NULL) {
                 self::getList();
-            foreach (self::$list as $data)
+            }
+            foreach (self::$list as $data) {
                 if ($data->default == static::STATUS_KEY_ON) {
                     self::$default_lang = $data;
                     break;
                 }
+            }
         }
         return self::$default_lang;
     }
@@ -150,8 +162,9 @@ final class Lang extends ActiveRecord {
 
             $list_all = Lang::find()->published()->all();
             $l = array();
-            foreach ($list_all as $data)
+            foreach ($list_all as $data) {
                 $l[$data->alias] = $data;
+            }
 
             self::$list = $l;
         }
@@ -163,13 +176,37 @@ final class Lang extends ActiveRecord {
      * @param string $alias
      * @return Lang|null
      */
-    static function getLangByUrl($alias = NULL) {
+    static function getLangByAlias($alias = NULL) {
         if ($alias === NULL) {
             return NULL;
         } else {
-            if (self::$list == NULL)
+            if (self::$list == NULL) {
                 self::getList();
+            }
             return (isset(self::$list[$alias])) ? self::$list[$alias] : NULL;
+        }
+    }
+
+    /**
+     * The method return language by local
+     * @param string $local
+     * @return Lang|null
+     */
+    static function getLangByLocal($local = NULL) {
+        if ($local === NULL) {
+            return NULL;
+        } else {
+            if (self::$list == NULL) {
+                self::getList();
+            }
+            $return = NULL;
+            foreach (self::$list as $lang) {
+                if ($lang->local === $local) {
+                    $return = $lang;
+                    break;
+                }
+            }
+            return $return;
         }
     }
 
