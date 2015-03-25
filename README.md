@@ -1,7 +1,6 @@
 uses [components/I18N]:
 
     'components' => [
-...
         'i18n' => [
             'class' => 'filamentv\app\components\I18N',
             'translations' => [
@@ -11,7 +10,6 @@ uses [components/I18N]:
                 ],
             ]
         ],
-...
     ],
 
 uses [components/Pagination]:
