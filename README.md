@@ -17,3 +17,13 @@ uses [components/I18N]:
 uses [components/Pagination]:
 
 'class' => 'filamentv\app\components\Pagination'
+
+
+Instalation
+===
+
+    composer.phar require "filamentv/yii2-app":"dev-master"
+
+or add to composer.json into 'require' seaction
+
+    "filamentv/yii2-app":"dev-master"
