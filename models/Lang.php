@@ -52,7 +52,7 @@ final class Lang extends ActiveRecord {
             [['published', 'deleted'], 'in', 'range' => self::statusKeyRage()],
             [['update_time', 'create_time'], 'integer'],
             [['alias'], 'string', 'min' => 2, 'max' => 2],
-            [['local'], 'string', 'max' => 5],
+            [['local'], 'string', 'min' => 5, 'max' => 5],
             [['title'], 'string', 'max' => 50],
             [['alias'], 'unique']
         ];

@@ -5,6 +5,7 @@ namespace filamentv\app\models\query;
 use filamentv\app\models\ActiveRecord;
 
 /**
+ * Class ActiveQuery
  * @package filamentv\app\models\query
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread

@@ -5,16 +5,13 @@ namespace filamentv\app\models;
 use Yii;
 
 /**
+ * Class ActiveRecordLang
  * @package filamentv\app\models
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 20/03/2015
+ * @version 25/03/2015
  */
 abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
-
-    public function init() {
-        parent::init();
-    }
 
     /**
      * @return []
