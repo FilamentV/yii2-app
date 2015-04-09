@@ -106,7 +106,7 @@ final class Tinymce extends InputWidget {
         $view = $this->getView();
         Asset::register($view);
         $assetslang = AssetLang::register($view);
-        $this->language_url = $a->baseUrl . '/' .
+        $this->language_url = $assetslang->baseUrl . '/' .
                 $assetslang->js[0];
         $this->settings['language_url'] = $this->language_url;
 
