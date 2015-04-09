@@ -8,6 +8,7 @@ use yii\helpers\Json;
 use yii\widgets\InputWidget;
 use yii\helpers\ArrayHelper;
 use filamentv\app\extensions\editors\tinymce\assets\Asset;
+use filamentv\app\extensions\editors\tinymce\assets\AssetLang;
 
 /**
  * Class Tinymce
@@ -104,8 +105,9 @@ final class Tinymce extends InputWidget {
     public function registerClientScript() {
         $view = $this->getView();
         Asset::register($view);
-        $this->language_url = $view->assetBundles['thread\extensions\editors\tinymce\assets\AssetLang']->baseUrl . '/' .
-                $view->assetBundles['thread\extensions\editors\tinymce\assets\AssetLang']->js[0];
+        $assetslang = AssetLang::register($view);
+        $this->language_url = $a->baseUrl . '/' .
+                $assetslang->js[0];
         $this->settings['language_url'] = $this->language_url;
 
         $settings = Json::encode($this->settings);
