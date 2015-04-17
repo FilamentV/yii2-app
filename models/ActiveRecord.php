@@ -2,6 +2,7 @@
 
 namespace filamentv\app\models;
 
+use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -48,10 +49,10 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord {
     /**
      * @return []
      */
-    public static function statusKeyRage() {
+    public static function statusKeyRange() {
         return [
-            static::STATUS_KEY_ON,
-            static::STATUS_KEY_OFF
+            static::STATUS_KEY_ON => Yii::t('app', 'KEY_ON'),
+            static::STATUS_KEY_OFF => Yii::t('app', 'KEY_OFF')
         ];
     }
 
