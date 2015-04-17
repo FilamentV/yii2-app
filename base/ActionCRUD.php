@@ -15,45 +15,43 @@ use yii\base\Action;
 class ActionCRUD extends Action {
 
     /**
-     * Базовий layout
+     * layout's file
      * @var string
      */
     public $layout = '@app/layouts/crud';
 
     /**
-     * Відображення
+     * View's file
      * @var string
      */
     public $view = '_form';
 
     /**
-     * Назва моделі з якою будемо працювати
-     * модель має наслідувати \yii\db\ActiveRecord
+     * \yii\db\ActiveRecord
      * @var string
      */
     public $modelClass = null;
 
     /**
-     * Назва моделі з якою будемо працювати
-     * модель має наслідувати \yii\db\ActiveRecordLang
+     * \yii\db\ActiveRecord
      * @var string
      */
     public $modelClassLang = null;
 
     /**
-     * Посилання переходу
+     * Redirect
      * @var string|array| typeof Closure
      */
     public $redirect = 'update';
 
     /**
-     * Назва сценарію, що має виконуватися для валідації даних моделі
+     * model's scenario
      * @var string
      */
     public $scenario = 'backend';
 
     /**
-     * Перевірка на дозвіл
+     * Check for permission
      * @var boollean false|true
      */
     public $checkAccess = false;
@@ -69,8 +67,8 @@ class ActionCRUD extends Action {
     protected $modelLang = null;
 
     /**
-     * Пошук моделі по первинному ключу
-     * Якщо модель не знайдена, повертається null
+     * Search by model pervychnomu key
+     * If the pattern is not found, returns null
      * @param integer|array $id Ідентифікатор моделі
      * @return {Model}|null Повернення знайденої моделі
      */
@@ -92,8 +90,8 @@ class ActionCRUD extends Action {
     }
 
     /**
-     * Пошук мовної моделі по первинному ключу
-     * Якщо модель не знайдена, повертається null
+     * Search by model pervychnomu key
+     * If the pattern is not found, returns null
      * @param integer $id Ідентифікатор моделі
      * @return {Model}Lang Повернення знайденої моделі
      */
@@ -111,7 +109,7 @@ class ActionCRUD extends Action {
     }
 
     /**
-     * Формує посилання куди повертаємося після зберігання
+     * Generates a link where we return after storage
      * @return type
      */
     public function getRedirect() {
@@ -128,7 +126,7 @@ class ActionCRUD extends Action {
     }
 
     /**
-     * Повертає модель даных, що створена в процесі роботи
+     * Returns the data model that is created in the process
      * @return object ActiveRecord
      */
     public function getModel() {

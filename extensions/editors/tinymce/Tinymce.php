@@ -12,7 +12,7 @@ use filamentv\app\extensions\editors\tinymce\assets\AssetLang;
 
 /**
  * Class Tinymce
- * 
+ *
  * @package filamentv\app\extensions\editors\tinymce
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
@@ -21,31 +21,31 @@ use filamentv\app\extensions\editors\tinymce\assets\AssetLang;
 final class Tinymce extends InputWidget {
 
     /**
-     * Налаштування редактору
+     * Setting the editor
      * @var array {@link http://www.tinymce.com/wiki.php/Configuration redactor options}.
      */
     public $settings = [];
 
     /**
-     * Виклик налаштувань для редактору
-     * @var string ''|full|mini 
+     * Call settings for the editor
+     * @var string ''|full|mini
      */
     public $thema = '';
 
     /**
-     * Мова інтерфейсу редатору
-     * @var string 
+     * Language editor
+     * @var string
      */
     public $language;
 
     /**
-     * Посилання на файл, що містить переводи інтерфейсу мови
-     * @var string link 
+     * Link to the file containing switches interface language
+     * @var string link
      */
     protected $language_url;
 
     /**
-     * Налаштування редактору за замовчуванням
+     * Setting the default editor
      * @var array
      */
     protected $_defaultSettings;
@@ -100,7 +100,7 @@ final class Tinymce extends InputWidget {
     }
 
     /**
-     * Регистрируем AssetBundle-ы виджета.
+     * AssetBundle's register
      */
     public function registerClientScript() {
         $view = $this->getView();

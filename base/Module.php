@@ -15,37 +15,37 @@ use Yii;
 abstract class Module extends \yii\base\Module {
 
     /**
-     * Назва модуля
+     * Model's name
      * @var string
      */
     public $title = "Module";
 
     /**
-     * Кількість записів на сторінку
+     * Recors on page
      * @var integer
      */
     public $itemOnPage = 50;
 
     /**
-     * Базова директорія для збереження файлів
+     * The base directory for saving files
      * @var string
      */
     public $fileUploadFolder = "";
 
     /**
-     * Назва віджету
+     * Model's name for translations extentions
      * @var string
      */
     public $name = 'module';
 
     /**
-     * Шлях до каталогу з повідомленнями
+     * Path to files with translations messages
      * @var string
      */
     public $translationsBasePath = '@app/messages';
 
     /**
-     * Шлях до файлу конфігурації
+     * Path to file configuration
      * @var string
      */
     public $configPath = '@app/modules/config.php';
@@ -61,6 +61,9 @@ abstract class Module extends \yii\base\Module {
 
     /**
      * Registers translations
+     *
+     * uses:
+     * Yii::t('module', 'messages')
      */
     public function registerTranslations() {
 
@@ -74,7 +77,7 @@ abstract class Module extends \yii\base\Module {
     }
 
     /**
-     * Повертає об'єкт підключення до БД
+     * Database's connect return
      */
     public static function getDb() {
         return Yii::$app->get('db');

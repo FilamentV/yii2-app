@@ -7,7 +7,7 @@ use yii\widgets\InputWidget;
 
 /**
  * Class Textarea
- * 
+ *
  * @package filamentv\app\extensions\editors\textarea
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
@@ -16,20 +16,20 @@ use yii\widgets\InputWidget;
 final class Textarea extends InputWidget {
 
     /**
-     * Налаштування 
+     * Settings
      * @var array
      */
     public $settings = [];
 
     /**
-     * Виклик налаштувань для редактору
-     * @var string ''|full|mini 
+     * Call settings for the editor
+     * @var string ''|full|mini
      */
     public $thema = '';
 
     /**
-     * Мова інтерфейсу редатору
-     * @var string 
+     * Language editor
+     * @var string
      */
     public $language;
 
@@ -44,7 +44,7 @@ final class Textarea extends InputWidget {
     public function init() {
         parent::init();
 
-        //Додаємо поле для редактору та визначаємо ідентифікатор
+        //Add a field to the editor and define ID
         if (!isset($this->settings['selector'])) {
             $this->settings['selector'] = '#' . $this->options['id'];
 
@@ -52,7 +52,7 @@ final class Textarea extends InputWidget {
                     Html::activeTextarea($this->model, $this->attribute, $this->options) :
                     Html::textarea($this->name, $this->value, $this->options);
         }
-        /* Якщо [[options['selector']]] false видаляємо з налаштувань. */
+        /* IF [[options['selector']]] false remove from the setting. */
         if (isset($this->settings['selector']) && $this->settings['selector'] === false) {
             unset($this->settings['selector']);
         }

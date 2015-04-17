@@ -6,22 +6,24 @@ use yii\helpers\ArrayHelper;
 
 /**
  * Class TreeModelBaseTrait
- * 
+ *
+ * TreeModelBaseTrait::initTree(0);
+ *
  * @package thread\helpers\tree
- * @author Filament
+ * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  * @version 23/02/2015
  */
 trait TreeModelBaseTrait {
 
     /**
-     * Роздільник, що використовується для створення full_alias
+     * РSeparator used to create full_alias
      * @var string
      */
     public $delimiterFullAlias = '-';
 
     /**
-     * Зберігає відбудоване дерево
+     * Saves rebuilt tree
      *
      * [tree][level][parent] = [id]
      * @var array
@@ -29,25 +31,29 @@ trait TreeModelBaseTrait {
     protected static $treeCache = [];
 
     /**
-     * Зберігає моделі
+     * Saves models
      * [id] = ActiveModel
      * @var array
      */
     protected static $treeModelCache = [];
 
     /**
-     * Встановлюэмо поточне дерево
+     * Set the current tree
      * @var integere
      */
     protected static $treeCurrent = 0;
 
+    /**
+     *
+     * @param integer $tree
+     */
     public static function initTree($tree = 0) {
         self::findTreeModel($tree);
         self::fillinTree($tree);
     }
 
     /**
-     * Встановлює поточне дерево ат повертає статус виконання операції
+     * Sets the current tree atm returns the status of the operation
      * @param integer $tree
      * @return boolean
      */
@@ -61,7 +67,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Повертає шлях від початку дерева по місця пошуку
+     * Returns the path from the beginning of the tree search destination
      * @param integer $id
      * @return array|null
      */
@@ -81,7 +87,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Повертає повну гілку дерева
+     * Returns the full tree branch
      * @param type $id
      * @return array|null
      */
@@ -94,7 +100,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Створює дерево відносно висначеного кореня
+     * Creates a tree root relative definition
      * @param integer $id
      * @return array|null
      */
@@ -116,7 +122,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Створення впорядкованого дерева
+     * Create an ordered tree
      * @return array
      */
     public static function createTree() {
@@ -136,7 +142,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Повертає підменю по визначеному id батька
+     * Returns the id specified in sub father
      * @param integere $parent
      * @return array|null
      */
@@ -159,7 +165,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     *
+     * Base level return
      * @return type
      */
     public static function getBaseLevel() {
@@ -175,7 +181,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Повертає структуру поточного дерева
+     * Returns the current tree structure
      * @return array
      */
     public static function getTreeStructure() {
@@ -183,7 +189,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Очищення створеної структури
+     * Cleaning creating structures
      * @param integer $tree
      */
     public static function destructTree($tree = 0) {
@@ -205,7 +211,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Заповнює дерево
+     * Fills tree
      * @param integer $tree
      */
     public static function fillinTree($tree = 0) {
@@ -215,7 +221,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Повертає модель батька поточної моделі
+     * Returns the model father of the current model
      * @return type
      */
     public function getParent() {
@@ -223,7 +229,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Повернення моделі з кеша даних
+     * Returns the cached data model
      * @param integer $id
      * @return ActiveRecord|null
      */
@@ -232,8 +238,8 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Перевірка чи модель не переноситься в себе
-     * використовуєтсья в validate
+     * Check whether the model is not tolerated a
+     * used in validate
      */
     public function validateParentPath() {
 
@@ -252,7 +258,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Перевіряє та встановлює правильне значення атрибуту level
+     * Checks and sets the correct value attribute level
      * ActiveRecord::EVENT_BEFORE_INSERT => [$this->owner, 'validateLevel']
      * ActiveRecord::EVENT_BEFORE_UPDATE => [$this->owner, 'validateLevel']
      */
@@ -268,7 +274,7 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Створює та встановлює значення атрибуту full_alias
+     * Creates and sets the attribute full_alias
      * ActiveRecord::EVENT_BEFORE_VALIDATE => [$this->owner, 'createFullAlias']
      */
     public function createFullAlias() {
@@ -292,8 +298,8 @@ trait TreeModelBaseTrait {
     }
 
     /**
-     * Реструктуризація частини дерева, що підпорядкована
-     * даній моделі
+     * Restructuring of the tree which is subject to
+     * this model
      * ActiveRecord::EVENT_AFTER_UPDATE => [$this->owner, 'restructureSubTree']
      */
     public function restructureSubTree() {

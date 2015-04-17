@@ -13,7 +13,7 @@ namespace filamentv\app\models\query;
 class RatingQuery extends ActiveQuery {
 
     /**
-     * Запис з встановленим полем user_id
+     * Recording established field user_id
      * @param integer $user_id
      * @return ActiveQuery $this
      */
@@ -24,7 +24,7 @@ class RatingQuery extends ActiveQuery {
     }
 
     /**
-     * Запис з встановленим полем item_id
+     * Recording established field item_id
      * @param integer $item_id
      * @return ActiveQuery $this
      */

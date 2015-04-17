@@ -8,7 +8,7 @@ use yii\validators\Validator;
 use yii\db\ActiveRecord;
 
 /**
- * 
+ *
   //tree attribute
   [['position', 'level'], 'default', 'value' => 0],
   [['parent', 'position', 'level'], 'integer'],
@@ -18,7 +18,7 @@ use yii\db\ActiveRecord;
   [['parent'], 'validateParentPath'],
  *
  * Class TreeBehavior
- * 
+ *
  * @package filamentv\app\helpers\tree\multi
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
@@ -27,9 +27,9 @@ use yii\db\ActiveRecord;
 class TreeBehavior extends Behavior {
 
     /**
-     * Якщо використовується атрибут full_alias
-     * для зберігання повного символьного імені
-     * @var boolean 
+     * If you use an attribute full_alias
+     * to store the full character name
+     * @var boolean
      */
     public $useFullAlias = true;
 

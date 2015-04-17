@@ -7,7 +7,7 @@ use yii\widgets\InputWidget;
 
 /**
  * Class Editor
- * 
+ *
  * @package filamentv\app\extensions\editors
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
@@ -16,33 +16,33 @@ use yii\widgets\InputWidget;
 final class Editor extends InputWidget {
 
     /**
-     * Вибір редактору
+     * Editor type's set
      * @var string tinymce
      */
     public $editor;
 
     /**
-     * Вибір налаштувань
-     * @var string 
+     * Editor's thema
+     * @var string
      */
     public $thema;
 
     /**
-     * Ширина поля редактору
-     * @var type 
+     * Editor's height window
+     * @var type
      */
     public $height;
 
     /**
-     * Редактор за замовчуванням
-     * @var string 
+     * Editor by default
+     * @var string
      */
     private $_defaultEditor = 'Tinymce';
 
     /**
-     * Перелік дозволених редакторів
-     * 
-     * @var arrray 
+     * The list of allowed editors
+     *
+     * @var arrray
      */
     private $_editors = [
         'Tinymce' => \filamentv\app\extensions\editors\tinymce\Tinymce::class,

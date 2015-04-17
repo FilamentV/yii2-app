@@ -20,7 +20,7 @@ use yii\db\ActiveRecord;
  *
  * Class MultiTreeBehavior
  * Behavior for ActiveRecord [[MultiTreeBehavior]]
- * 
+ *
  * @package filamentv\app\helpers\tree\multi
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
@@ -29,8 +29,8 @@ use yii\db\ActiveRecord;
 class MultiTreeBehavior extends Behavior {
 
     /**
-     * Якщо використовується атрибут full_alias
-     * для зберігання повного символьного імені
+     * If you use an attribute full_alias
+     * to store the full character name
      * @var boolean
      */
     public $useFullAlias = true;

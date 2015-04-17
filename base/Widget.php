@@ -4,8 +4,8 @@ namespace filamentv\app\base;
 
 /**
  * Class Widget
- * 
- * @package thread\base
+ *
+ * @package filamentv\app\base
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  * @version 19/03/2015
@@ -13,19 +13,19 @@ namespace filamentv\app\base;
 abstract class Widget extends \yii\base\Widget {
 
     /**
-     * Назва файлу відображення
+     * View's file
      * @var string
      */
     public $view = 'Widget';
 
     /**
-     * Назва віджету
+     * Widget's name
      * @var string
      */
     public $name = 'widget';
 
     /**
-     * Шлях до каталогу з повідомленнями
+     * Path to files with translations messages
      * @var string
      */
     public $translationsBasePath = '@app/messages';
@@ -40,8 +40,8 @@ abstract class Widget extends \yii\base\Widget {
     }
 
     /**
-     * Підключення перекладів.
-     * В каталозі має бути створено файл перекладу <lang>/messages/app.php
+     * File translation include
+     * <lang>/messages/app.php
      */
     public function registerTranslations() {
 
