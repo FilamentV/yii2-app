@@ -15,22 +15,22 @@ use Yii;
 abstract class Widget extends \yii\bootstrap\Widget {
 
     /**
-     * Назва файлу відображення
+     * View's file name
      * @var string
      */
     public $view = 'Widget';
 
     /**
-     * Назва віджету
+     * Widget's name
      * @var string
      */
     public $name = 'widget';
 
     /**
-     * Шлях до каталогу з повідомленнями
+     * Path to messages
      * @var string
      */
-    public $translationsBasePath = '@thread/app/messages';
+    public $translationsBasePath = '@app/messages';
 
     /**
      * @inherit
@@ -42,8 +42,11 @@ abstract class Widget extends \yii\bootstrap\Widget {
     }
 
     /**
-     * Підключення перекладів.
-     * В каталозі має бути створено файл перекладу <lang>/messages/app.php
+     * Messages transplate register
+     *  /<lang>/messages/app.php
+     * 
+     * uses:
+     * Yii::t('widget-search', 'messages')
      */
     public function registerTranslations() {
 
