@@ -1,13 +1,13 @@
 <?php
 
-namespace thread\bootstrap;
+namespace filamentv\app\bootstrap;
 
 use Yii;
 
 /**
  * Class Widget
  * 
- * @package thread\bootstrap
+ * @package filamentv\app\bootstrap
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  * @version 19/03/2015

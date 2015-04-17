@@ -6,7 +6,7 @@ uses [components/I18N]:
             'translations' => [
                 'app' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@thread/messages',
+                    'basePath' => '@app/messages',
                 ],
             ]
         ],

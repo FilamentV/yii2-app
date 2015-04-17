@@ -7,7 +7,7 @@ use Yii;
 /**
  * Class Module
  *
- * @package thread\base
+ * @package filamentv\app\base
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  * @version 19/03/2015

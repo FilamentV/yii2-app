@@ -7,7 +7,7 @@ use yii\base\Action;
 /**
  * Class ActionCRUD
  *
- * @package thred\base
+ * @package filamentv\app\base
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  * @version 22/03/2015
