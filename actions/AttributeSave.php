@@ -95,7 +95,7 @@ class AttributeSave extends ActionCRUD {
 
             $model->{$this->attribute} = $value;
 
-            $transaction = Yii::$app->db->beginTransaction();
+            $transaction = $model::getDb()->beginTransaction();
 
             try {
                 $save = $model->save();

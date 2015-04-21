@@ -90,8 +90,8 @@ class CreateWithLang extends ActionCRUD {
         $this->modelLang->setScenario($this->scenario);
 
         if ($this->model->load(Yii::$app->getRequest()->post())) {
-
-            $transaction = Yii::$app->db->beginTransaction();
+            $model = $this->model;
+            $transaction = $model::getDb()->beginTransaction();
             try {
                 $save = $this->model->save();
 

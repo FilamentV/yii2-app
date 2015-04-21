@@ -99,7 +99,7 @@ class AttributeSwith extends ActionCRUD {
 
             $model->{$this->attribute} = ($model->{$this->attribute} === ActiveRecord::STATUS_KEY_ON) ? ActiveRecord::STATUS_KEY_OFF : ActiveRecord::STATUS_KEY_ON;
 
-            $transaction = Yii::$app->db->beginTransaction();
+            $transaction = $model::getDb()->beginTransaction();
 
             try {
                 $save = $model->save();

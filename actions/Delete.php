@@ -57,8 +57,8 @@ class Delete extends ActionCRUD {
         $delete = false;
 
         if ($model = $this->findModel($id)) {
-
-            $transaction = Yii::$app->db->beginTransaction();
+            
+            $transaction = $model::getDb()->beginTransaction();
 
             try {
                 $delete = $model->delete();
