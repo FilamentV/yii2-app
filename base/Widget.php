@@ -2,6 +2,8 @@
 
 namespace filamentv\app\base;
 
+use Yii;
+
 /**
  * Class Widget
  *
