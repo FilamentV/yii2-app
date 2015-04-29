@@ -48,7 +48,7 @@ abstract class Widget extends \yii\base\Widget {
     public function registerTranslations() {
 
         Yii::$app->i18n->translations['widget-' . $this->name] = [
-            'class' => yii\i18n\PhpMessageSource::class,
+            'class' => \yii\i18n\PhpMessageSource::class,
             'basePath' => $this->translationsBasePath,
             'fileMap' => [
                 'widget-' . $this->name => 'app.php',
