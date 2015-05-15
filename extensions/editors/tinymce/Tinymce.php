@@ -18,7 +18,7 @@ use filamentv\app\extensions\editors\tinymce\assets\AssetLang;
  * @copyright (c) 2015, Thread
  * @version 18/03/2015
  */
-final class Tinymce extends InputWidget {
+class Tinymce extends InputWidget {
 
     /**
      * Setting the editor

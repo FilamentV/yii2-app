@@ -13,7 +13,7 @@ use yii\widgets\InputWidget;
  * @copyright (c) 2015, Thread
  * @version 18/03/2015
  */
-final class Editor extends InputWidget {
+class Editor extends InputWidget {
 
     /**
      * Editor type's set

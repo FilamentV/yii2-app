@@ -13,7 +13,7 @@ use yii\widgets\InputWidget;
  * @copyright (c) 2015, Thread
  * @version 18/03/2015
  */
-final class Textarea extends InputWidget {
+class Textarea extends InputWidget {
 
     /**
      * Settings
