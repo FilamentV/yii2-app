@@ -105,6 +105,7 @@ class AttributeSwith extends ActionCRUD {
                 $save = $model->save();
                 ($save) ? $transaction->commit() : $transaction->rollBack();
             } catch (Exception $e) {
+                Yii::getLogger()->log($e->getMessage(), Logger::LEVEL_ERROR);
                 $transaction->rollBack();
             }
         }

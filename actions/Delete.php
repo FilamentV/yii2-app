@@ -64,6 +64,7 @@ class Delete extends ActionCRUD {
                 $delete = $model->delete();
                 ($delete) ? $transaction->commit() : $transaction->rollBack();
             } catch (Exception $e) {
+                Yii::getLogger()->log($e->getMessage(), Logger::LEVEL_ERROR);
                 $transaction->rollBack();
             }
         }
