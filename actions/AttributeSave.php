@@ -44,7 +44,8 @@ class AttributeSave extends ActionCRUD {
     public $redirect = ['list'];
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
 

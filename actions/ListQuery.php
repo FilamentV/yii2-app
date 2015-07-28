@@ -67,7 +67,8 @@ class ListQuery extends Action {
     public $sort = '';
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
 
@@ -77,7 +78,8 @@ class ListQuery extends Action {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @return type
      */
     public function run() {
 

@@ -30,7 +30,8 @@ use filamentv\app\base\ActionCRUD;
 class Update extends ActionCRUD {
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
         if ($this->modelClass === null)
@@ -46,7 +47,10 @@ class Update extends ActionCRUD {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @param type $id
+     * @return type
+     * @throws Exception
      */
     public function run($id) {
 

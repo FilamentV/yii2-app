@@ -7,7 +7,6 @@ use yii\base\Action;
 use yii\web\Response;
 use yii\base\Exception;
 
-
 /**
  * Class ListModel
  * 
@@ -65,7 +64,8 @@ class ListModel extends Action {
     protected $model = null;
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
         if ($this->modelClass === null)
@@ -81,7 +81,8 @@ class ListModel extends Action {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @return type
      */
     public function run() {
 

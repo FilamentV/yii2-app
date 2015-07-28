@@ -29,7 +29,7 @@ class DeleteAction extends Action {
     public $paramName = 'file';
 
     /**
-     * @inheritdoc
+     * 
      */
     public function init() {
         //default path
@@ -40,7 +40,8 @@ class DeleteAction extends Action {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @return type
      */
     public function run() {
         $error = 'file don\'t exist';

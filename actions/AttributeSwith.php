@@ -50,7 +50,8 @@ class AttributeSwith extends ActionCRUD {
     protected $model = null;
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
 

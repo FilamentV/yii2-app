@@ -64,7 +64,8 @@ class RecordView extends Action {
     protected $model = null;
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
         if ($this->modelClass === null)
@@ -80,7 +81,10 @@ class RecordView extends Action {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @param type $alias
+     * @return type
+     * @throws NotFoundHttpException
      */
     public function run($alias) {
 

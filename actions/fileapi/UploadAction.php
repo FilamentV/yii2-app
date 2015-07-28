@@ -58,7 +58,8 @@ class UploadAction extends Action {
     private $_validator = 'image';
 
     /**
-     * @inheritdoc
+     * 
+     * @throws InvalidCallException
      */
     public function init() {
         //default path
@@ -76,7 +77,9 @@ class UploadAction extends Action {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @return type
+     * @throws BadRequestHttpException
      */
     public function run() {
         if (Yii::$app->request->isPost) {
@@ -92,7 +95,7 @@ class UploadAction extends Action {
             if ($model->validate()) {
 
                 if ($this->unique === true)
-                    $model->file->name = uniqid() . '.' . $model->file->extension;
+                    $model->file->name = uniqid() . ((empty($model->file->extension)) ? '' : '.' . $model->file->extension);
 
                 if ($model->file->saveAs($this->path . $model->file->name)) {
                     $result = ['key' => $model->file->name, 'caption' => $model->file->name, 'name' => $model->file->name];

@@ -37,7 +37,8 @@ class Delete extends ActionCRUD {
     public $redirect = ['list'];
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
 
@@ -51,14 +52,16 @@ class Delete extends ActionCRUD {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @param type $id
+     * @return type
      */
     public function run($id) {
 
         $delete = false;
 
         if ($model = $this->findModel($id)) {
-            
+
             $transaction = $model::getDb()->beginTransaction();
 
             try {

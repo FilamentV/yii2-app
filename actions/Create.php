@@ -29,7 +29,8 @@ use filamentv\app\base\ActionCRUD;
 class Create extends ActionCRUD {
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
         if ($this->modelClass === null)
@@ -46,7 +47,8 @@ class Create extends ActionCRUD {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @return type
      */
     public function run() {
 

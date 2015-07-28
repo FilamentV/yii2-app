@@ -31,7 +31,8 @@ use filamentv\app\base\ActionCRUD;
 class CreateWithLang extends ActionCRUD {
 
     /**
-     * @inheritdoc
+     * 
+     * @throws Exception
      */
     public function init() {
         if ($this->modelClass === null)
@@ -57,7 +58,8 @@ class CreateWithLang extends ActionCRUD {
     }
 
     /**
-     * @inheritdoc
+     * 
+     * @return type
      */
     public function run() {
 
