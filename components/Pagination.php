@@ -11,10 +11,16 @@ use yii\web\NotFoundHttpException;
  * @package filamentv\app\components
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 20/03/2015
+ * @version 27/08/2015
  */
 class Pagination extends \yii\data\Pagination {
 
+    /**
+     * generate expetion or not 
+     * @var boollean 
+     */
+    public $generateExeption = true;
+    
     /**
      *
      * @param integer $value
@@ -22,17 +28,18 @@ class Pagination extends \yii\data\Pagination {
      * @throws NotFoundHttpException
      */
     public function setPage($value, $validatePage = false) {
-        parent::setPage($value, $validatePage = false);
+        parent::setPage($value, $validatePage);
 
-        if ($value < 0)
+        if ($value < 0 && $this->generateExeption == true) {
             throw new NotFoundHttpException;
-
+        }
         $pageCount = $this->getPageCount();
-        if ($value >= $pageCount)
+        if ($value >= $pageCount && $this->generateExeption == true) {
             throw new NotFoundHttpException;
-
-        if (Yii::$app->getRequest()->get($this->pageParam) == 1)
+        }
+        if (Yii::$app->getRequest()->get($this->pageParam) == 1 && $this->generateExeption == true) {
             throw new NotFoundHttpException;
+        }
     }
 
     /**
