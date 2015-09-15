@@ -26,7 +26,7 @@ abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
      * @return type
      */
     public static function find() {
-        return parent::find()->andWhere([static::tableName() . '.lang' => Yii::$app->language]);
+        return parent::find()->onCondition([static::tableName() . '.lang' => Yii::$app->language]);
     }
 
     /**
