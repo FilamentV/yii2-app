@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Action;
 use yii\web\Response;
 use yii\base\Exception;
+use filamentv\app\actions\ListModelFilter;
 
 /**
  * Class ListModel
@@ -13,7 +14,6 @@ use yii\base\Exception;
  * @package filamentv\app\actions
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 22/03/2015
  *
   public function actions() {
   return [
@@ -43,6 +43,15 @@ class ListModel extends Action {
     public $view = 'list';
 
     /**
+     *
+     * @var array 
+     */
+    public $filter = [
+        'class' => ListModelFilter::class,
+        'modelClass' => null,
+    ];
+
+    /**
      * @var string ActiveRecord::class
      */
     public $modelClass = null;
@@ -64,20 +73,34 @@ class ListModel extends Action {
     protected $model = null;
 
     /**
+     * @var Object
+     */
+    protected $_filter = null;
+
+    /**
      * 
      * @throws Exception
      */
     public function init() {
-        if ($this->modelClass === null)
-            throw new Exception(__CLASS__ . '::$modelClass must be set.');
+        if ($this->modelClass === null && class_exists($this->modelClass))
+            throw new Exception(__CLASS__ . '::$modelClass must be set and exists.');
 
         $this->model = new $this->modelClass;
 
-        if ($this->model === null)
-            throw new Exception($this->modelClass . ' must be exists.');
-
         if (!method_exists($this->model, $this->methodName))
             throw new Exception($this->modelClass . '::' . $this->methodName . ' must be exists.');
+
+        /**
+         * Create Filter if exists params
+         */
+        if ($this->filter['class'] !== null && class_exists($this->filter['class']) && $this->filter['modelClass'] !== null) {
+
+            $f = $this->filter;
+            $f['controller'] = $this->controller;
+            unset($f['class']);
+
+            $this->_filter = new $this->filter['class']($f);
+        }
     }
 
     /**
@@ -101,6 +124,14 @@ class ListModel extends Action {
                         'model' => $this->model,
             ]);
         }
+    }
+
+    /**
+     * 
+     * @return Filter|null
+     */
+    public function getFilter() {
+        return $this->_filter;
     }
 
 }
