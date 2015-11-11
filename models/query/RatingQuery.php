@@ -8,7 +8,6 @@ namespace filamentv\app\models\query;
  * @package filamentv\app\models\query
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 04/04/2015
  */
 class RatingQuery extends ActiveQuery {
 

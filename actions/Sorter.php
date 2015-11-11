@@ -5,54 +5,58 @@ namespace filamentv\app\actions;
 use Yii;
 use yii\base\Exception;
 use yii\web\Response;
-use yii\log\Logger;
+use yii\helpers\Json;
 use filamentv\app\base\ActionCRUD;
-use filamentv\app\models\ActiveRecord;
 
 /**
- * Class AttributeSwith
- * 
- * @package filamentv\app\actions
+ * Class Sorter
+ *
+ * @package thread\actions
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
  *
   public function actions() {
   return [
  * ...
-  'published' => [
-  'class' => AttributeKeySwith::class,
+  'sorter' => [
+  'class' => AttributeSave::class,
   'modelClass' => Model::class,
-  'attribute' => 'published'
   ],
  * ...
   ];
   }
  *
  */
-class AttributeSwith extends ActionCRUD {
+class Sorter extends ActionCRUD {
 
     /**
-     * it's attribute model
+     * Name of attribute which use to send data between frontend and backend
      * @var string
      */
-    public $attribute;
+    public $dataKey = 'sort';
 
     /**
-     * it's redirect 
-     * @var type array|string| typeof Closure
+     * taken data
+     * 
+     * @var array
      */
-    public $redirect = ['list'];
+    public $data = [];
 
     /**
-     * @var ActiveRecord
+     * Model Attribute
+     * @var string
      */
-    protected $model = null;
+    public $attribute = 'position';
 
     /**
      * 
      * @throws Exception
      */
     public function init() {
+
+        if (empty($this->dataKey)) {
+            throw new Exception(__CLASS__ . '::$dataKey must be set.');
+        }
 
         if ($this->modelClass === null) {
             throw new Exception(__CLASS__ . '::$modelClass must be set.');
@@ -75,12 +79,19 @@ class AttributeSwith extends ActionCRUD {
 
     /**
      * 
-     * @param type $id
      * @return type
      */
-    public function run($id) {
+    public function run() {
+        //Load Data
+        $this->data = Yii::$app->getRequest()->post($this->dataKey, []);
+        if (!empty($this->data)) {
+            $this->data = Json::decode($this->data);
+        } else {
+            $this->toLog('Data is empty');
+        }
 
-        $save = $this->save($id);
+        //Save Data
+        $save = (!empty($this->data)) ? $this->save() : false;
 
         if (Yii::$app->getRequest()->isAjax) {
             Yii::$app->getResponse()->format = Response::FORMAT_JSON;
@@ -91,23 +102,33 @@ class AttributeSwith extends ActionCRUD {
     }
 
     /**
-     * Save data into $model
-     * @param integer $id
+     * Зберігає дані моделі
      * @return boollean
      */
-    protected function save($id) {
+    protected function save() {
 
         $save = false;
+        $model = $this->model;
+        $attribute = $this->attribute;
 
-        if ($model = $this->findModel($id)) {
-            $model->setScenario($this->attribute);
+        $data = $this->data;
+        $list = $model::find()->rangeID($data)->indexBy('id')->all();
 
-            $model->{$this->attribute} = ($model->{$this->attribute} === ActiveRecord::STATUS_KEY_ON) ? ActiveRecord::STATUS_KEY_OFF : ActiveRecord::STATUS_KEY_ON;
+        if ($list !== null) {
 
             $transaction = $model::getDb()->beginTransaction();
 
             try {
-                $save = $model->save();
+
+                foreach ($data as $key => $m) {
+                    $list[$m][$attribute] = $key;
+                    $list[$m]['scenario'] = $attribute;
+                    $save = $list[$m]->save();
+                    if ($save === false) {
+                        break;
+                    }
+                }
+
                 ($save) ? $transaction->commit() : $transaction->rollBack();
             } catch (Exception $e) {
                 $this->toLog($e->getMessage(), Logger::LEVEL_ERROR);

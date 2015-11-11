@@ -11,7 +11,6 @@ use yii\widgets\InputWidget;
  * @package filamentv\app\extensions\editors
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 18/03/2015
  */
 class Editor extends InputWidget {
 
@@ -55,11 +54,13 @@ class Editor extends InputWidget {
      */
     public function init() {
 
-        if (empty($this->language))
+        if (empty($this->language)) {
             $this->language = Yii::$app->language;
+        }
 
-        if (!in_array($this->editor, $this->_editors))
+        if (!in_array($this->editor, $this->_editors)) {
             $this->editor = $this->_defaultEditor;
+        }
     }
 
     /**

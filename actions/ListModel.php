@@ -82,13 +82,15 @@ class ListModel extends Action {
      * @throws Exception
      */
     public function init() {
-        if ($this->modelClass === null && class_exists($this->modelClass))
+        if ($this->modelClass === null && class_exists($this->modelClass)) {
             throw new Exception(__CLASS__ . '::$modelClass must be set and exists.');
+        }
 
         $this->model = new $this->modelClass;
 
-        if (!method_exists($this->model, $this->methodName))
+        if (!method_exists($this->model, $this->methodName)) {
             throw new Exception($this->modelClass . '::' . $this->methodName . ' must be exists.');
+        }
 
         /**
          * Create Filter if exists params

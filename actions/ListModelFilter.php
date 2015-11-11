@@ -49,13 +49,15 @@ class ListModelFilter extends \yii\base\Component {
      */
     public function init() {
 
-        if ($this->modelClass === null && class_exists($this->modelClass))
+        if ($this->modelClass === null && class_exists($this->modelClass)) {
             throw new Exception(__CLASS__ . '::$modelClass must be set and exists.');
+        }
 
         $this->model = new $this->modelClass;
 
-        if ($this->controller !== null && !($this->controller instanceof \yii\base\Controller))
+        if ($this->controller !== null && !($this->controller instanceof \yii\base\Controller)) {
             throw new Exception(__CLASS__ . '::$controllerClass must be set and exists.');
+        }
     }
 
     /**

@@ -15,7 +15,6 @@ use yii\validators\Validator;
  * @package filamentv\app\actions\fileapi
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 15/04/2015
  */
 class UploadBehavior extends Behavior {
 
@@ -295,7 +294,7 @@ class UploadBehavior extends Behavior {
     }
 
     /**
-     * @param string $attribute Attribute name
+     * @param string $filename Attribute name
      *
      * @return boolean Whether file exist or not
      */

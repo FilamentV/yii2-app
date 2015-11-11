@@ -12,7 +12,6 @@ use yii\helpers\ArrayHelper;
  * @package thread\helpers\tree
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 23/02/2015
  */
 trait TreeModelBaseTrait {
 
@@ -248,12 +247,15 @@ trait TreeModelBaseTrait {
             static::fillinTree(static::$treeCurrent);
             $path = static::getPathById($this->parent);
             $state = false;
-            foreach ($path as $m)
-                if ($m->id == $this->id)
+            foreach ($path as $m) {
+                if ($m->id == $this->id) {
                     $state = true;
+                }
+            }
 
-            if ($state === true)
+            if ($state === true) {
                 $this->addError('parent', 'No move in this parent');
+            }
         }
     }
 

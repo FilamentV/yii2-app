@@ -10,7 +10,6 @@ use app\modules\user\User;
  * @package thread\models
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 12/04/2015
  */
 abstract class RatingRecord extends ActiveRecord {
 

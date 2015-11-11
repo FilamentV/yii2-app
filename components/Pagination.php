@@ -11,7 +11,6 @@ use yii\web\NotFoundHttpException;
  * @package filamentv\app\components
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 27/08/2015
  */
 class Pagination extends \yii\data\Pagination {
 

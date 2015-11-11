@@ -3,6 +3,7 @@
 namespace filamentv\app\base;
 
 use yii\base\Action;
+use yii\log\Logger;
 
 /**
  * Class ActionCRUD
@@ -10,7 +11,6 @@ use yii\base\Action;
  * @package filamentv\app\base
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 22/03/2015
  */
 class ActionCRUD extends Action {
 
@@ -131,6 +131,15 @@ class ActionCRUD extends Action {
      */
     public function getModel() {
         return $this->model;
+    }
+
+    /**
+     * 
+     * @param string $message
+     * @param string $err_level see Logger
+     */
+    public function toLog($message, $err_level = Logger::LEVEL_INFO) {
+        Yii::getLogger()->log($message, $err_level);
     }
 
 }

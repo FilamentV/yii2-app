@@ -107,6 +107,30 @@ class ActiveQuery extends \yii\db\ActiveQuery {
     }
 
     /**
+     * @param array $IDs
+     * @return ActiveQuery $this
+     */
+    public function rangeID(array $IDs) {
+        $modelClass = $this->modelClass;
+
+        $this->andWhere(['in', $modelClass::tableName() . '.id', $IDs]);
+
+        return $this;
+    }
+
+    /**
+     * @param array $IDs
+     * @return ActiveQuery $this
+     */
+    public function withoutIDs(array $IDs) {
+        $modelClass = $this->modelClass;
+
+        $this->andWhere(['not in', $modelClass::tableName() . '.id', $IDs]);
+
+        return $this;
+    }
+
+    /**
      * @return ActiveQuery $this
      */
     public function lang() {

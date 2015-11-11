@@ -17,7 +17,6 @@ use yii\web\UploadedFile;
  * @package filamentv\app\actions\fileapi
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 15/04/2015
  */
 class UploadAction extends Action {
 
@@ -63,8 +62,9 @@ class UploadAction extends Action {
      */
     public function init() {
         //default path
-        if ($this->path === null)
+        if ($this->path === null) {
             $this->path = Yii::getAlias('@temp');
+        }
 
         $this->path = FileHelper::normalizePath(Yii::getAlias($this->path)) . DIRECTORY_SEPARATOR;
 
@@ -72,8 +72,9 @@ class UploadAction extends Action {
             throw new InvalidCallException("Directory specified in 'path' attribute doesn't exist or cannot be created.");
         }
         //set validator model type
-        if ($this->uploadOnlyImage !== true)
+        if ($this->uploadOnlyImage !== true) {
             $this->_validator = 'file';
+        }
     }
 
     /**
@@ -84,8 +85,9 @@ class UploadAction extends Action {
     public function run() {
         if (Yii::$app->request->isPost) {
 
-            if (!empty($this->getParamName) && Yii::$app->getRequest()->get($this->getParamName))
+            if (!empty($this->getParamName) && Yii::$app->getRequest()->get($this->getParamName)) {
                 $this->paramName = Yii::$app->getRequest()->get($this->getParamName);
+            }
 
             $file = UploadedFile::getInstanceByName($this->paramName);
 
@@ -94,20 +96,20 @@ class UploadAction extends Action {
 
             if ($model->validate()) {
 
-                if ($this->unique === true)
+                if ($this->unique === true) {
                     $model->file->name = uniqid() . ((empty($model->file->extension)) ? '' : '.' . $model->file->extension);
-
-                if ($model->file->saveAs($this->path . $model->file->name)) {
-                    $result = ['key' => $model->file->name, 'caption' => $model->file->name, 'name' => $model->file->name];
-                } else {
-                    $result = ['error' => 'Can\'t upload file'];
                 }
+
+                $result = ($model->file->saveAs($this->path . $model->file->name)) ?
+                        ['key' => $model->file->name, 'caption' => $model->file->name, 'name' => $model->file->name] :
+                        ['error' => 'Can\'t upload file'];
             } else {
                 $result = ['error' => $model->getErrors()];
             }
 
-            if (\Yii::$app->getRequest()->isAjax)
+            if (Yii::$app->getRequest()->isAjax) {
                 Yii::$app->response->format = Response::FORMAT_JSON;
+            }
 
             return $result;
         } else {

@@ -16,7 +16,6 @@ use filamentv\app\extensions\editors\tinymce\assets\AssetLang;
  * @package filamentv\app\extensions\editors\tinymce
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 18/03/2015
  */
 class Tinymce extends InputWidget {
 
@@ -83,8 +82,9 @@ class Tinymce extends InputWidget {
             unset($this->settings['selector']);
         }
 
-        if (empty($this->language))
+        if (empty($this->language)){
             $this->language = Yii::$app->language;
+        }
 
         $this->settings = ArrayHelper::merge($this->_defaultSettings, $this->settings);
     }
@@ -95,7 +95,7 @@ class Tinymce extends InputWidget {
     public function run() {
         if ($this->_textarea !== null) {
             $this->registerClientScript();
-            echo $this->_textarea;
+            return $this->_textarea;
         }
     }
 

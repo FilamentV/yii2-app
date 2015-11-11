@@ -10,10 +10,10 @@ use filamentv\app\base\ActionCRUD;
 
 /**
  * Class Delete
+ * 
  * @package filamentv\app\actions
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 22/03/2015
  *
   public function actions() {
   return [
@@ -42,13 +42,15 @@ class Delete extends ActionCRUD {
      */
     public function init() {
 
-        if ($this->modelClass === null)
+        if ($this->modelClass === null) {
             throw new Exception(__CLASS__ . '::$modelClass must be set.');
+        }
 
         $this->model = new $this->modelClass;
 
-        if ($this->model === null)
+        if ($this->model === null) {
             throw new Exception($this->modelClass . '::$modelClass must be set.');
+        }
     }
 
     /**
@@ -68,7 +70,7 @@ class Delete extends ActionCRUD {
                 $delete = $model->delete();
                 ($delete) ? $transaction->commit() : $transaction->rollBack();
             } catch (Exception $e) {
-                Yii::getLogger()->log($e->getMessage(), Logger::LEVEL_ERROR);
+                $this->toLog($e->getMessage(), Logger::LEVEL_ERROR);
                 $transaction->rollBack();
             }
         }

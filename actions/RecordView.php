@@ -14,7 +14,6 @@ use yii\web\Response;
  * @package filamentv\app\actions
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 22/03/2015
  *
   public function actions() {
   return [
@@ -68,16 +67,20 @@ class RecordView extends Action {
      * @throws Exception
      */
     public function init() {
-        if ($this->modelClass === null)
+        
+        if ($this->modelClass === null){
             throw new Exception(__CLASS__ . '::$modelClass must be set.');
+        }
 
         $this->model = new $this->modelClass;
 
-        if ($this->model === null)
+        if ($this->model === null){
             throw new Exception($this->modelClass . ' must be exists.');
+        }
 
-        if (!method_exists($this->model, $this->methodName))
+        if (!method_exists($this->model, $this->methodName)){
             throw new Exception($this->modelClass . '::' . $this->methodName . ' must be exists.');
+        }
     }
 
     /**
@@ -91,8 +94,9 @@ class RecordView extends Action {
         $ref = new \ReflectionMethod($this->model, $this->methodName);
         $model = $ref->invoke($this->model, $alias);
 
-        if ($model === null)
+        if ($model === null){
             throw new NotFoundHttpException;
+        }
 
         if (Yii::$app->getRequest()->isAjax) {
             Yii::$app->getResponse()->format = Response::FORMAT_JSON;

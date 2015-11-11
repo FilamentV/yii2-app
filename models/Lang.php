@@ -6,13 +6,12 @@ use Yii;
 use yii\data\ActiveDataProvider;
 
 /**
- *
+ * Class Lang
  * Base Language Model to use into filament\multilang
  *
  * @package filamentv\app\models
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 20/03/2015
  */
 class Lang extends ActiveRecord {
 
@@ -219,8 +218,9 @@ class Lang extends ActiveRecord {
         if ($alias === NULL) {
             return FALSE;
         } else {
-            if (self::$list == NULL)
+            if (self::$list == NULL){
                 self::getList();
+            }
             return (isset(self::$list[$alias])) ? TRUE : FALSE;
         }
     }

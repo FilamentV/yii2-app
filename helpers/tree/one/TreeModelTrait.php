@@ -4,30 +4,46 @@ namespace filamentv\app\helpers\tree\one;
 
 /**
  * Class TreeModelTrait
- * Trait для ActiveRecord [[TreeModelTrait]]
+ * Trait for ActiveRecord [[TreeModelTrait]]
  * 
  * @package filamentv\app\helpers\tree\one
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 18/03/2015
  */
 trait TreeModelTrait {
 
     use \filamentv\app\helpers\tree\TreeModelBaseTrait;
 
+    /**
+     * 
+     * @param integer $tree
+     * @return boolean
+     */
     public static function setTreeCurrent($tree) {
         return true;
     }
 
+    /**
+     * 
+     * @param integer $tree
+     */
     public static function destructTree($tree = 0) {
         static::$treeCache[0] = [];
     }
 
+    /**
+     * 
+     * @param integer $tree
+     */
     public static function fillinTree($tree = 0) {
-        foreach (static::$treeModelCache as $model)
+        foreach (static::$treeModelCache as $model) {
             static::$treeCache[0][$model->level][$model->parent][] = $model->id;
+        }
     }
 
+    /**
+     * 
+     */
     public function validateParentPath() {
 
         if ($this->parent > 0) {

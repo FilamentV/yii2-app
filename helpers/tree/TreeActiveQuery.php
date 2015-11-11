@@ -8,7 +8,6 @@ namespace filamentv\app\helpers\tree;
  * @package filamentv\app\helpers\tree
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 18/03/2015
  */
 trait TreeActiveQuery {
 

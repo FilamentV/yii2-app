@@ -11,7 +11,6 @@ use yii\widgets\InputWidget;
  * @package filamentv\app\extensions\editors\textarea
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 18/03/2015
  */
 class Textarea extends InputWidget {
 
@@ -62,8 +61,9 @@ class Textarea extends InputWidget {
      * @inheritdoc
      */
     public function run() {
-        if ($this->_textarea !== null)
-            echo $this->_textarea;
+        if ($this->_textarea !== null) {
+            return $this->_textarea;
+        }
     }
 
 }

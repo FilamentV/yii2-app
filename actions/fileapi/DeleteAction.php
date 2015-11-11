@@ -13,7 +13,6 @@ use Yii;
  * @package filamentv\app\actions\fileapi
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 15/04/2015
  */
 class DeleteAction extends Action {
 
@@ -33,8 +32,9 @@ class DeleteAction extends Action {
      */
     public function init() {
         //default path
-        if ($this->path === null)
+        if ($this->path === null) {
             $this->path = Yii::getAlias('@temp');
+        }
 
         $this->path = FileHelper::normalizePath($this->path) . DIRECTORY_SEPARATOR;
     }
@@ -55,8 +55,9 @@ class DeleteAction extends Action {
             }
         }
 
-        if (\Yii::$app->getRequest()->isAjax)
+        if (Yii::$app->getRequest()->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
+        }
 
         $result = ['error' => $error];
 

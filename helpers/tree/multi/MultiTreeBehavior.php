@@ -24,7 +24,6 @@ use yii\db\ActiveRecord;
  * @package filamentv\app\helpers\tree\multi
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 18/03/2015
  */
 class MultiTreeBehavior extends Behavior {
 
@@ -35,11 +34,19 @@ class MultiTreeBehavior extends Behavior {
      */
     public $useFullAlias = true;
 
+    /**
+     * 
+     * @param type $owner
+     */
     public function attach($owner) {
         parent::attach($owner);
         $this->addRules();
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function events() {
 
         $r = [
@@ -56,6 +63,9 @@ class MultiTreeBehavior extends Behavior {
         return $r;
     }
 
+    /**
+     * 
+     */
     protected function addRules() {
 
         $this->owner->validators[] = Validator::createValidator('default', $this->owner, ['position', 'level'], ['value' => 0]);

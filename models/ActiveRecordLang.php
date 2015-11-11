@@ -6,10 +6,10 @@ use Yii;
 
 /**
  * Class ActiveRecordLang
+ * 
  * @package filamentv\app\models
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 25/03/2015
  */
 abstract class ActiveRecordLang extends \yii\db\ActiveRecord {
 

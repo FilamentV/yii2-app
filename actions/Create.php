@@ -9,10 +9,10 @@ use filamentv\app\base\ActionCRUD;
 
 /**
  * Class Create
+ * 
  * @package filamentv\app\actions
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 22/03/2015
  *
   public function actions() {
   return [
@@ -33,17 +33,20 @@ class Create extends ActionCRUD {
      * @throws Exception
      */
     public function init() {
-        if ($this->modelClass === null)
+        if ($this->modelClass === null){
             throw new Exception(__CLASS__ . '::$modelClass must be set.');
+        }
 
         $this->model = new $this->modelClass;
         $this->model->loadDefaultValues();
 
-        if ($this->model === null)
+        if ($this->model === null){
             throw new Exception($this->modelClass . 'must be exists.');
+        }
 
-        if (!$this->model->is_scenario($this->scenario))
+        if (!$this->model->is_scenario($this->scenario)){
             throw new Exception($this->modelClass . '::' . $this->scenario . ' scenario doesn\'t exist');
+        }
     }
 
     /**
@@ -87,7 +90,7 @@ class Create extends ActionCRUD {
 
                 ($save) ? $transaction->commit() : $transaction->rollBack();
             } catch (Exception $e) {
-                Yii::getLogger()->log($e->getMessage(), Logger::LEVEL_ERROR);
+                $this->toLog($e->getMessage(), Logger::LEVEL_ERROR);
                 $transaction->rollBack();
             }
         }

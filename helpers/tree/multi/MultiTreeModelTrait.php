@@ -9,7 +9,6 @@ namespace filamentv\app\helpers\tree\multi;
  * @package filamentv\app\helpers\tree\multi
  * @author FilamentV <vortex.filament@gmail.com>
  * @copyright (c) 2015, Thread
- * @version 18/03/2015
  */
 trait MultiTreeModelTrait {
 
